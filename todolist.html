@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>to-do list</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        } 
+        header{
+            background-color: black;
+        }
+        header h1{
+            text-align: center;
+            color: aliceblue;
+        }
+        main{
+            width:500px;
+            height: 600px;
+            margin: 50px auto;
+            padding: 40px;
+            border: 3px black solid;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        form{
+            margin: 20px;
+        }
+        #mytext{
+            padding: 0 10px;
+            margin-right: 10px;
+            height: 30px;
+        }
+        ul{
+            width: 100%;
+            background-color: black;
+            color: aliceblue;
+            list-style: none;
+        }
+        li{
+            position: relative;
+            padding: 10px;
+        }
+        #addbtn{
+            background-color:black;
+            color: aliceblue;
+            padding: 5px;
+        }
+        #addbtn:hover{
+            cursor: pointer;
+            color:black;
+            background-color:aliceblue;
+        }
+        .close{
+            cursor:pointer;
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+      
+        }
+        .close:hover{
+            background-color: thistle;
+        }
+     
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>TO-DO LIST</h1>
+    </header>
+    <main>
+        <form>
+            <input id="mytext" placeholder="Enter the text" type="text" >
+            <span id="addbtn" onclick="mylist()">Add</span>
+        </form>
+        <ul id="myul">
+            <li>Red</li>
+            <li>green</li>
+        </ul>
+    </main>
+    <script>
+
+        var list = document.getElementsByTagName("li")
+        for (var i=0;i<list.length;i++){
+            var span = document.createElement("span");
+            span.className = 'close';
+            var close = document.createTextNode("X");
+            span.appendChild(close);
+            list[i].appendChild(span);
+        }
+        var close = document.getElementsByClassName('close');
+        for(var i=0;i<close.length;i++){
+            close[i].onclick=function(){
+                var d=this.parentElement;
+                d.style.display="none";
+            }
+        }
+
+
+        function mylist() {
+            var li = document.createElement("li");
+            var mytxt = document.getElementById("mytext").value;
+            var t = document.createTextNode(mytxt);
+            li.appendChild(t);
+            if(mytxt == ""){
+                alert("please enter the value");
+            }
+            else{
+                document.getElementById("myul").appendChild(li);
+            }
+            
+            var list = document.getElementsByTagName("li")
+            for (var i=0;i<list.length;i++){
+                var span = document.createElement("span");
+                span.className = 'close';
+                var close = document.createTextNode("X");
+                span.appendChild(close);
+                list[i].appendChild(span);
+            }
+            var close = document.getElementsByClassName('close');
+            for(var i=0;i<close.length;i++){
+                close[i].onclick=function(){
+                    var d=this.parentElement;
+                    d.style.display="none";
+                }
+        }
+        }
+    </script>
+</body>
+</html>
